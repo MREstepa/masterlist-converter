@@ -3,11 +3,12 @@ import numpy as np
 import xlsxwriter
 
 from tkinter import Tk
-from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import askopenfilename, askdirectory
 
 # upload file
 Tk().withdraw()
 file_name = askopenfilename()
+file_directory = askdirectory()
 
 # Read data from original masterlist
 batch_number = input('Batch Number: ')
@@ -63,7 +64,8 @@ for rec in range(length):
 
 
 # Convert into another masterlist
-workbook = xlsxwriter.Workbook('Batch-{}_masterlist.xlsx'.format(batch_number))
+converted_masterlist = file_directory + '/Batch-{}_masterlist.xlsx'.format(batch_number)
+workbook = xlsxwriter.Workbook(converted_masterlist)
 
 pickup_masterlist = workbook.add_worksheet('PickupList')
 product_masterlist = workbook.add_worksheet('ProductList')
