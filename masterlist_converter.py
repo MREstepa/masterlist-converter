@@ -2,13 +2,18 @@ import pandas as pd
 import numpy as np
 import xlsxwriter
 
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
+# upload file
+Tk().withdraw()
+file_name = askopenfilename()
 
 # Read data from original masterlist
 batch_number = input('Batch Number: ')
 pickup_date = input('Date of Pickup (mm/dd): ')
 
 my_sheet = 'For Pickup'
-file_name = 'Group-Delivery-Batch-{}.xlsx'.format(batch_number)
 
 df = pd.read_excel(file_name, sheet_name = my_sheet)
 df.columns = [
