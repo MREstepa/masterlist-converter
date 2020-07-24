@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd /Users/$USER/Documents/Repository/project_env
+source bin/activate
+cd /Users/$USER/Documents/Repository/masterlist-converter
+pip install -r requirements.txt
+python3 masterlist_converter.py
