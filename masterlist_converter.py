@@ -10,10 +10,10 @@ def convert():
     batch_number = batchnum_entry.get()
     pickup_date = pickup_date_entry.get()
 
+    columns = [x for x in range(1, 11)]
     my_sheet = 'For Pickup'
-    df = pd.read_excel(filename, sheet_name = my_sheet)
+    df = pd.read_excel(filename, sheet_name = my_sheet, usecols=columns)
     df.columns = [
-        'index',
         'date',
         'usana_id',
         'usana_name',
@@ -23,12 +23,7 @@ def convert():
         'quantity',
         'total_price',
         'total',
-        'delivery_address',
-        'sf',
-        'each',
-        'add',
-        'total',
-        'tracking_number'
+        'delivery_address'
     ]
 
     df.dropna(subset=['sales_order'], inplace=True)
@@ -134,10 +129,26 @@ def convert():
 
     index = 3
     for rec in range(len(so_list)):
-        pickup_masterlist.write('A' + str(index), so_list[rec], so_format)
-        pickup_masterlist.write('B' + str(index), assoc_name_list[rec], content_format)
-        pickup_masterlist.write('C' + str(index), usana_id_list[rec], content_format)
-        pickup_masterlist.write('D' + str(index), type_list[rec], content_format)
+
+        if so_list[rec] != so_list[rec]:  # if null
+            pickup_masterlist.write('A' + str(index), '-', so_format)
+        else: 
+            pickup_masterlist.write('A' + str(index), so_list[rec], so_format)
+
+        if assoc_name_list[rec] != assoc_name_list[rec]:  # if null
+            pickup_masterlist.write('B' + str(index), '-', content_format)
+        else: 
+            pickup_masterlist.write('B' + str(index), assoc_name_list[rec], content_format)
+
+        if usana_id_list[rec] != usana_id_list[rec]:  # if null
+            pickup_masterlist.write('C' + str(index), '-', content_format)
+        else: 
+            pickup_masterlist.write('C' + str(index), usana_id_list[rec], content_format)
+
+        if type_list[rec] != type_list[rec]:  # if null
+            pickup_masterlist.write('D' + str(index), '-', content_format)
+        else: 
+            pickup_masterlist.write('D' + str(index), type_list[rec], content_format)
         index += 1
 
     pickup_masterlist.set_column('A:A', 17.00)

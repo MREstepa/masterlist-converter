@@ -13,4 +13,8 @@
     - Navigate in file manager to upload original masterlist
     - Select folder in file manager to download converted masterlist
 
+- v2.1 03 Aug 2020
+    - Added Nan value checker
+    - Removed fetching of unnecessary columns
+
 [MREstepa](https://bitbucket.org/MREstepa/)
