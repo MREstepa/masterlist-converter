@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd /Users/$USER/Documents/Repository/project_env
+cd /Users/$USER/Documents/Repository/venv
 source bin/activate
 cd /Users/$USER/Documents/Repository/masterlist-converter
 pip install -r requirements.txt
