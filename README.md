@@ -1,4 +1,4 @@
-# Masterlist converter
+# Masterlist converter [Depreciated]
 
 * Converting Masterlist to Pickup and Product Masterlist
 
@@ -17,4 +17,4 @@
     - Added Nan value checker
     - Removed fetching of unnecessary columns
 
-[MREstepa](https://bitbucket.org/MREstepa/)
+MREstepa
